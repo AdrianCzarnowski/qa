@@ -53,7 +53,7 @@ public class JavaParamTest {
         assertEquals(number % 5, 0);
     }
 //    enum ParamEnum {
-//        ENUM_ONE,
+//        ENUM_ONE,,
 //        ENUM_TWO
     }
 
