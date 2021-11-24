@@ -21,6 +21,6 @@ public class MyProfilePage extends BasePage {
     }
 
     public void clickLogOutButton() {
-        click(logOutButton, 3);
+        click(logOutButton, 5);
     }
 }
