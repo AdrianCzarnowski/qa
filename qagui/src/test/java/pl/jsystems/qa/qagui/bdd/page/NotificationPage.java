@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Notification extends BasePage {
+public class NotificationPage extends BasePage {
 
-    public Notification(WebDriver driver) {
+    public NotificationPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }

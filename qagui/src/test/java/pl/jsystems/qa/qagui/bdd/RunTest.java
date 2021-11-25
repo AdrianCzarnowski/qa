@@ -8,22 +8,25 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources",
         glue = "classpath:pl.jsystems.qa.qagui.bdd",
-        plugin = {"pretty", "summary", "html:target/cucumber/report.html", "json: target/cucumber.json",
+        plugin = {"pretty", "summary", "html:target/cucumber/report.html", "json:target/cucumber.json",
                 "junit:target/cucumber.xml", "rerun:target/rerun.txt"},
         tags =
-                "BDD "
-                        +
-                        "and "
-                        +
-                        "@Login "
-                        +
-                        "and "
-                        +
-                        "@wordpress "
-                        +
-                        "and "
-                        +
-                        "@userpanel"
+//                "@BDD "
+//                        +
+//                        "and "
+//                        +
+//                        "@Login "
+//                        +
+//                        "and "
+//                        +
+//                        "@wordpress "
+//                        +
+//                        "and "
+//                        +
+//                        "@userpanel"
+//        "@website"
+//        "@website2"
+                "@website3"
 )
 public class RunTest {
 
