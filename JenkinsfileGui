@@ -2,24 +2,23 @@ pipeline {
     agent any
 
     triggers {
-        cron('40 10 * * *')
+        cron('40 14 * * *')
     }
 
     parameters {
-        choice(name: 'TAG', choices: ['FrontEnd', 'smoke', 'Login', 'Notiication', 'Keys_Action', 'scroll', 'alert', 'frame', 'Window'], description: 'Choose tag.')
-        choice(name: 'EX_TAG', choices: ['', 'FrontEnd', 'smoke', 'Login', 'Notiication', 'Keys_Action', 'scroll', 'alert', 'frame', 'Window'], description: 'Choose tag.')
+        choice(name: 'TAG', choices: ['FrontEnd', 'smoke', 'Login', 'Notification', 'Keys_Action', 'Scroll', 'Alert', 'Frame', 'Window'], description: 'Choose tag.')
+        choice(name: 'EX_TAG', choices: ['','smoke', 'Login', 'Notification', 'Keys_Action', 'Scroll', 'Alert', 'Frame', 'Window'], description: 'Choose tag.')
     }
 
     stages {
         stage('checkout') {
             steps {
-                git branch: 'feature/gui',  url: 'https://github.com/AdrianCzarnowski/qa.git'
+                git branch: 'develop', url: 'https://github.com/Test112021/qa'
             }
         }
         stage('build') {
             steps {
-                sh "mvn clean test -Dgroups=${params.TAG} -DexcludedGroups=${params.EX_TAG} -pl qaqui"
-                sh "find ./qagui"
+                sh "mvn clean test -Dgroups=${params.TAG} -DexcludedGroups=${params.EX_TAG} -pl qagui"
             }
         }
     }
