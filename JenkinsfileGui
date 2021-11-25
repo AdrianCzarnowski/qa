@@ -18,7 +18,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git branch: 'feature/gui', url: 'https://https://github.com/AdrianCzarnowski/qa'
+                git branch: 'feature/gui', url: 'https://github.com/AdrianCzarnowski/qa'
             }
         }
         stage('build') {
