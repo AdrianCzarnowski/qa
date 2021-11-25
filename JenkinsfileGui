@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    triggers {
+        cron('40 10 * * *')
+    }
+
+    parameters {
+        choice(name: 'TAG', choices: ['FrontEnd', 'smoke', 'Login', 'Notiication', 'Keys_Action', 'scroll', 'alert', 'frame', 'Window'], description: 'Choose tag.')
+        choice(name: 'EX_TAG', choices: ['', 'FrontEnd', 'smoke', 'Login', 'Notiication', 'Keys_Action', 'scroll', 'alert', 'frame', 'Window'], description: 'Choose tag.')
+    }
+
+    stages {
+        stage('checkout') {
+            steps {
+                git branch: 'feature/junit-param',  url: 'https://github.com/AdrianCzarnowski/qa.git'
+            }
+        }
+        stage('build') {
+            steps {
+                sh "mvn clean test -Dgroups=${params.TAG} -DexcludedGroups=${params.EX_TAG} -pl qaqui"
+            }
+        }
+    }
+
+    post {
+        always {
+            allure([
+                     includeProperties: false,
+                     jdk: '',
+                     properties: [[key: 'allure.issues.tracker.pattern', value: 'http://tracker.company.com/%s'],
+                     [key: 'allure.tests.management.pattern', value: 'http://tms.company.com/%s'],
+                     ],
+                     reportBuildPolicy: 'ALWAYS',
+                     results: [[path: 'qagui/target/allure-results']]
+            ])
+
+        }
+    }
+}
