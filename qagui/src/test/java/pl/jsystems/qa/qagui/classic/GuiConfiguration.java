@@ -34,7 +34,7 @@ public class GuiConfiguration {
     public void setUp() {
 //        driver = new FirefoxDriver();
 //        driver = new EdgeDriver();
-//        driver = new ChromeDriver();
+        driver = new ChromeDriver();
 
         setUpMachine();
         confDriver();
