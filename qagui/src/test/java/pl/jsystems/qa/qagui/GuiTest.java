@@ -15,16 +15,16 @@ import java.time.Duration;
 import java.util.Set;
 
 import static com.google.common.truth.Truth.assertThat;
-import static java.lang.Thread.sleep;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static pl.jsystems.qa.qagui.GuiConfig.*;
 
 @Tags({@Tag("FrontEnd"), @Tag("smoke")})
 @DisplayName("Frontend test")
+public class GuiTest extends GuiConfiguration {
 
-public class GuiTest extends GuiConfig {
-    @DisplayName("Login Test")
+    @Tag("Log")
+    @DisplayName("login test")
     @Test
     public void lgInTest() {
         driver.get("https://wordpress.com/");
@@ -77,23 +77,24 @@ public class GuiTest extends GuiConfig {
     @DisplayName("login test, cleaned")
     @Test
     public void lgIn() {
-        driver.get("https://wordpress.com/");
+//        driver.get("https://wordpress.com/");
+        driver.get(BASE_URL);
         wordpressMainPage = new WordpressMainPage(driver);
         wordpressMainPage.clickLogIn();
 
         loginPage = new LoginPage(driver);
-        loginPage.enterUser("automation112021");
+        loginPage.enterUser(LOGIN);
         loginPage.userContinueButton.click();
-        loginPage.enterPass("Test112021");
+        loginPage.enterPass(PASSWORD);
         loginPage.passConfirmButton.click();
         mainUserPage = new MainUserPage(driver);
         assertTrue(mainUserPage.avatar.isDisplayed());
 
-        driver.get("https://wordpress.com/me");
+        driver.get(BASE_URL + "/me");
 
         myProfilePage = new MyProfilePage(driver);
 
-        assertThat(myProfilePage.getProfileName()).isEqualTo("automation112021");
+        assertThat(myProfilePage.getProfileName()).isEqualTo(LOGIN);
         myProfilePage.clickLogOutButton();
 
     }
@@ -102,12 +103,12 @@ public class GuiTest extends GuiConfig {
     @DisplayName("Notification")
     @Test
     public void notification() {
-        driver.get("https://wordpress.com/");
+        driver.get(BASE_URL);
         logIn();
         mainUserPage = new MainUserPage(driver);
         assertTrue(mainUserPage.avatar.isDisplayed());
 
-        driver.get("https://wordpress.com/me");
+        driver.get(BASE_URL + "/me");
 
         myProfilePage = new MyProfilePage(driver);
 
@@ -129,6 +130,7 @@ public class GuiTest extends GuiConfig {
 
 
     }
+
     @Tag("Keys_Action")
     @DisplayName("Keys short")
     @Test
@@ -140,6 +142,7 @@ public class GuiTest extends GuiConfig {
 
 
     }
+
     @Tag("Keys_Action")
     @DisplayName("Simple action")
     @Test
@@ -159,12 +162,6 @@ public class GuiTest extends GuiConfig {
                 .click();
         action.build().perform();
 
-
-
-    }
-
-
-    private void assertFalse(boolean selected) {
     }
 
     private void logIn() {
@@ -177,7 +174,8 @@ public class GuiTest extends GuiConfig {
         loginPage.enterPass("Test112021");
         loginPage.passConfirmButton.click();
     }
-    @Tag("scroll")
+
+    @Tag("Scroll")
     @DisplayName("scroll")
     @Test
     public void pageScroll() {
@@ -203,7 +201,8 @@ public class GuiTest extends GuiConfig {
 
         driver.findElement(By.linkText("Open page in the same window")).click();
     }
-    @Tag("scroll")
+
+    @Tag("Scroll")
     @Test
     void scrollIntoView(){
         driver.get("http://manos.malihu.gr/repository/custom-scrollbar/demo/examples/complete_examples.html");
@@ -213,7 +212,7 @@ public class GuiTest extends GuiConfig {
 
         je.executeScript("arguments[0].scrollIntoView(true);", element);
     }
-    @Tag("alert")
+    @Tag("Alert")
     @Disabled
     @DisplayName("alert")
     @Test
@@ -231,7 +230,8 @@ public class GuiTest extends GuiConfig {
         String title = driver.getTitle();
         assertThat(title).isEqualTo("title");
     }
-    @Tag("frame")
+
+    @Tag("Frame")
     @DisplayName("Frame")
     @Test
     public void frameTest(){
@@ -257,7 +257,8 @@ public class GuiTest extends GuiConfig {
 
         driver.switchTo().parentFrame();
     }
-    @Tag("Window")
+
+    @Tags({@Tag("Window"), @Tag("scroll")})
     @DisplayName("Window test")
     @Test
     public void windowTest() {
