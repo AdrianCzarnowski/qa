@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git branch: 'develop', url: 'https://https://github.com/AdrianCzarnowski/qa'
+                git branch: 'develop', url: 'https://github.com/AdrianCzarnowski/qa'
             }
         }
         stage('build') {
