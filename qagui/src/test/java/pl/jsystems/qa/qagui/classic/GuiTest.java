@@ -71,7 +71,7 @@ public class GuiTest extends GuiConfiguration {
     LoginPage loginPage;
     MainUserPage mainUserPage;
     MyProfilePage myProfilePage;
-    Notification notificationPage;
+    NotificationPage notificationPage;
 
     @Tag("Login")
     @DisplayName("login test, cleaned")
@@ -113,7 +113,7 @@ public class GuiTest extends GuiConfiguration {
         myProfilePage = new MyProfilePage(driver);
 
         myProfilePage.notificationLabel.click();
-        notificationPage = new Notification(driver);
+        notificationPage = new NotificationPage(driver);
 
         assertTrue(notificationPage.commentNotificationCheckBox.isSelected());
         assertFalse(notificationPage.aveSettingsButton.isEnabled());
