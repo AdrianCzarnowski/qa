@@ -1,10 +1,12 @@
 package pl.jsystems.qa.qagui.classic;
 
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+@Tags({@Tag("FrontEnd"), @Tag("katalon")})
 public class KatalonTest extends GuiConfiguration {
-
 
     @Test
     public void testUntitledTestCase() throws Exception {
@@ -22,4 +24,5 @@ public class KatalonTest extends GuiConfiguration {
         driver.findElement(By.xpath("//div[@id='secondary']/ul/li/div[2]/button")).click();
         //ERROR: Caught exception [unknown command []]
     }
+
 }
