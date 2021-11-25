@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git branch: 'feature/junit-param',  url: 'https://github.com/AdrianCzarnowski/qa.git'
+                git branch: 'feature/gui',  url: 'https://github.com/AdrianCzarnowski/qa.git'
             }
         }
         stage('build') {
