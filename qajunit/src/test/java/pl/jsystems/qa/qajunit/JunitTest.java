@@ -142,7 +142,7 @@ public class JunitTest {
         @Test
         public void exceptionTest() {
 
-            GamePlay gamePlay = new GamePlay();
+            pl.jsystems.qa.qajunit.GamePlay gamePlay = new pl.jsystems.qa.qajunit.GamePlay();
             Assertions.assertThrows(IllegalArgumentException.class, () -> gamePlay.play(0));
 
         }
