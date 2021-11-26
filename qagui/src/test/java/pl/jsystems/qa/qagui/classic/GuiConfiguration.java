@@ -32,8 +32,8 @@ public class GuiConfiguration {
 
     @BeforeEach
     public void setUp() {
-//        driver = new FirefoxDriver();
-//        driver = new EdgeDriver();
+        driver = new FirefoxDriver();
+        driver = new EdgeDriver();
         driver = new ChromeDriver();
 
         setUpMachine();
