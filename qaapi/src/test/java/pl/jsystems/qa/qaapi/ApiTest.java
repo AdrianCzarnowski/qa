@@ -1,7 +1,7 @@
 package pl.jsystems.qa.qaapi;
 
 import org.junit.jupiter.api.Test;
-
+import pl.jsystems.qa.qaapi.model.Author;
 
 
 public class ApiTest {
