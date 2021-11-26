@@ -1,15 +1,14 @@
 package pl.jsystems.qa.qaapi;
 
-import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.Matchers.*;
+
 
 public class ApiTest {
 
     @Test
     public void firstApiTest() {
-        RestAssured
+            RestAsured
                 .given()
                 .get("https://fakerestapi.azurewebsites.net/api/v1/Activities")
                 .then()
@@ -21,3 +20,10 @@ public class ApiTest {
                 .body("[0].completed", is(false));
     }
 }
+
+    @Test
+    public void apiTest() {
+    Author author = RestAssured
+            .given()
+            .get
+    }
