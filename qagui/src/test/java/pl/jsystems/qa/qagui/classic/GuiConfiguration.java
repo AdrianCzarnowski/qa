@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -30,12 +29,10 @@ public class GuiConfiguration {
         WebDriverManager.firefoxdriver().setup();
     }
 
-
     @BeforeEach
     public void setUp() {
-        driver = new FirefoxDriver();
-        driver = new EdgeDriver();
-        driver = new ChromeDriver();
+//        driver = new FirefoxDriver();
+//        driver = new ChromeDriver();
 
         setUpMachine();
         confDriver();
@@ -83,9 +80,7 @@ public class GuiConfiguration {
             case "firefox":
                 setUpFirefoxEnv();
                 return new FirefoxDriver();
-            case "edge":
-                setUpEdgeEnv();
-                return new EdgeDriver();
+
         }
         return new FirefoxDriver();
     }
@@ -99,9 +94,6 @@ public class GuiConfiguration {
         setUpEnv("webdriver.gecko.driver", "drivers/geckodriver.exe");
     }
 
-    private void setUpEdgeEnv() {
-        setUpEnv("webdriver.edge.driver", "driver/msedgedriver.exe");
-    }
 
     private void setUpEnv(String envName, String path) {
         try {
