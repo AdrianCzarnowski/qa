@@ -30,6 +30,7 @@ public class GuiConfiguration {
         WebDriverManager.firefoxdriver().setup();
     }
 
+
     @BeforeEach
     public void setUp() {
         driver = new FirefoxDriver();
